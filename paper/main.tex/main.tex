@@ -1,0 +1,657 @@
+\documentclass[a4paper,fleqn]{cas-dc}
+\usepackage[numbers]{natbib}
+
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{flushend}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{subcaption}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+\shorttitle{Intelligent Intrusion Detection Framework}
+\shortauthors{S Gopikrishnan et~al.}
+
+\title[mode = title]{Graph-Theoretic Routing Optimization for Dense Wireless Sensor Networks}
+
+\author[1]{Pranav Sista}[orcid=0009-0002-0853-8190]
+\cormark[1]
+\ead{pranav.23mic7173@vitapstudent.ac.in}
+\address[1]{School of Computer Science and Engineering, VIT-AP University, Amaravathi. Andhra Pradesh, India}
+
+\author[1]{Gopikrishnan}[orcid=0000-0001-9082-9012]
+\ead{gopikrishnan.s@vitap.ac.in}
+
+\cortext[cor1]{Corresponding author}
+
+\begin{abstract}
+Wireless Sensor Networks (WSNs) have experienced tremendous growth in recent times due to the increased use of sensing devices in applications such as environmental monitoring, smart cities, industrial automation, and healthcare services. In dense WSNs, the large numbers of sensor nodes pose significant problems such as depletion of power, congestion in routing paths, and inefficient transmission of data. Conventional routing protocols face significant problems in maintaining optimal routes in networks with high sensor density, unbalanced power consumption, and computational limitations. These problems result in significant reductions in network lifetimes, which negatively impact the efficiency of the entire communication process. To overcome these problems, this study seeks to investigate the application of graph-theoretic models to optimize the routing process in sensor networks. In this study, graph-theoretic models are proposed to optimize the routing process in sensor networks by representing sensor networks as graphs where each sensor node is represented by each vertex, with edges representing the connections between sensor nodes. The proposed study utilizes graph optimization techniques to optimize the routing process in sensor networks. Simulation results have confirmed that the application of graph-theoretic models to optimize the routing process in sensor networks has significant improvements in network lifetimes, reduced routing overhead, and increased packet delivery rates compared to conventional routing protocols.
+\end{abstract}
+
+\begin{keywords}
+Intrusion Detection System (IDS) \sep
+Internet of Things (IoT) \sep
+Class Imbalance \sep
+Feature Selection \sep
+Deep Learning \sep
+Convolutional neural networks (CNN) \sep
+Data Augmentation
+\end{keywords}
+
+\maketitle
+
+\section{Introduction}
+
+Wireless Sensor Networks (WSNs) have emerged as a foundational technology for applications in environmental monitoring, industrial automation, and smart cities, where energy efficiency and reliable data transmission are paramount due to the resource-constrained nature of sensor nodes \cite{r1,r18}. These networks often operate in dynamic environments, requiring robust mechanisms for topology management and routing to minimize energy depletion while ensuring connectivity \cite{r6,r29}. Graph-theoretic models, such as connected dominating sets (CDS) and spanning trees, provide a mathematical framework for clustering and routing, enabling the formation of virtual backbones that facilitate efficient communication and extend the lifetime of the network \cite{r6,r7}. Clustering algorithms in WSNs, inspired by graph theory, partition the network into manageable groups to reduce overhead and balance energy consumption, with approaches such as maximum independent sets (MIS) and Steiner trees showing to be effective in minimizing the size of the cluster and ensuring fault tolerance \cite{r6,r9}.
+
+However, challenges such as node failures, uneven energy distribution, and black holes arising from random deployments can disrupt network performance, highlighting the need for adaptive protocols that incorporate machine learning and graph metrics for hole detection and energy conservation \cite{r8,r11}. Distributed energy-efficient CDS construction further addresses these issues by using local network structures to achieve low approximation ratios and balanced load distribution, outperforming centralized methods in scalability \cite{r7,r9}. In the era of big data and the Internet of Things (IoT), WSNs must handle escalating data volumes while maintaining energy efficiency, where topology-aware deep learning models enhance optimization by capturing relational dependencies among nodes for better scheduling and resource allocation \cite{r19,r27}. Multi-hop routing protocols, grounded in graph-based strategies like ant colony optimization and covariance-matrix adaptation evolution strategies, optimize paths to mitigate interference and prolong network stability, achieving up to 87\% balanced energy consumption in industrial settings \cite{r8,r9}.
+
+Despite these advances, traditional routing algorithms often overlook dynamic factors such as mobility and quantum-inspired computations, which can accelerate solutions for NP-hard problems like shortest path finding in large-scale networks \cite{r12,r30}. Recent innovations, including deep reinforcement learning integrated with graph neural networks and memetic algorithms, offer promising avenues for real-time adaptation, achieving coverage ratios up to 96\% while minimizing redundancy and energy waste in query-driven WSNs \cite{r2,r11}. Nevertheless, gaps persist in integrating security, scalability, and real-time adaptability across heterogeneous environments, underscoring the need for hybrid models that combine graph theory with emerging computational paradigms. This paper proposes a novel graph-theoretic routing framework that addresses these limitations by optimizing energy-efficient clustering and multi-hop paths, demonstrating superior performance in lifetime extension and reliability compared to existing benchmarks \cite{r9,r14}.
+
+\subsection{Research Advancements and Contributions}
+
+\begin{sloppypar}
+The research advancements and contributions of this work represent a significant step forward in addressing the evolving challenges of energy-constrained, dynamic, and large-scale wireless sensor networks (WSNs) and next-generation Internet of Things (IoT) ecosystems. Building on foundational graph-theoretic approaches such as connected dominating sets, spanning trees, and centrality measures that have historically enabled efficient virtual backbones and topology control, recent literature has highlighted persistent limitations in static models, including poor adaptability to mobility, energy holes, and scalability in industrial or disaster scenarios \cite{r6,r29}. This study advances beyond these by proposing the first integrated hybrid framework that synergistically combines graph neural networks (GNNs) for robust relational modeling of node dependencies and interference patterns with deep reinforcement learning (DRL) for real-time, adaptive decision-making in topology control, clustering, and multi-hop routing. This hybrid design overcomes the retraining overhead and static assumptions of traditional heuristics (e.g., genetic algorithms, particle swarm optimization, memetic algorithms, and equilibrium-based edge-cutting) while surpassing the computational limitations of earlier quantum-inspired or single-objective methods like CMA-ES and QUBO formulations \cite{r11,r12}.
+\end{sloppypar}
+
+Key contributions include a multi-objective optimization mechanism that simultaneously balances energy consumption, residual energy distribution, network lifetime extension (targeting $\geq$30\%), packet delivery ratio ($\geq$98\%), end-to-end delay minimization, and coverage efficiency, achieving measurable superiority over benchmarks such as LEACH variants, BPGR-ES, DRL-GNN standalone hybrids, and quantum annealing approaches in simulations \cite{r8,r9,r2,r12}. By incorporating GNN's ability to capture complex graph structures and DRL's policy-based adaptability, the framework effectively mitigates black-hole formation, mobility-induced disconnections, and load imbalance in dense or industrial WSNs, while enhancing security through anomaly detection and trust-aware routing suitable for social IoT and disaster-prone environments \cite{r16,r22}. This bridges critical gaps identified in recent surveys such as the need for scalable, interpretable AI-graph integration in 6G/NG-IoT contexts and introduces a future-ready, low-overhead solution that maintains practicality for resource-constrained devices \cite{r27,r30}.
+
+Overall, this research contributes to the state-of-the-art by demonstrating how topology-aware GNN-DRL fusion can deliver 20--35\% improvements in lifetime and energy balance compared to existing methods, paving the way for more resilient, intelligent, and sustainable wireless networking paradigms in the era of massive connectivity and dynamic IoT deployments \cite{r2,r19}.
+
+\subsection{Research Objectives}
+
+The primary objective of this research is to propose and evaluate a novel hybrid graph neural network-based framework that integrates topology-aware deep reinforcement learning with multi-objective graph optimization techniques to achieve energy-efficient, adaptive, and secure routing and clustering in dynamic wireless sensor networks and next-generation IoT environments. Specifically, this study aims to develop an integrated model that combines graph neural networks (GNNs) for capturing complex relational dependencies among sensor nodes with deep reinforcement learning (DRL) for real-time adaptive decision-making in topology control, clustering, and multi-hop routing, thereby overcoming the limitations of static graph-theoretic approaches and traditional heuristic methods highlighted in the literature \cite{r6,r29}.
+
+The study further aims to optimize energy consumption, load balancing, network lifetime, and coverage efficiency simultaneously while addressing persistent challenges such as energy holes, black-hole formation, mobility-induced disconnections, and scalability issues in large-scale and industrial wireless sensor networks \cite{r8,r9}. Multi-objective optimization strategies inspired by CMA-ES and equilibrium-based edge-cutting techniques are incorporated to ensure balanced residual energy distribution and minimal end-to-end delay, achieving superior performance compared to existing hierarchical, memetic, quantum-inspired, and single-objective routing protocols \cite{r9,sensors2018,r11,r12}. Network resilience and security are enhanced by leveraging GNN's ability to model interference patterns, detect anomalies, and support trust-aware routing in social IoT and disaster-prone scenarios, bridging the gap between theoretical graph models and practical AI-driven adaptability required for 6G and NG-IoT deployments \cite{r16,r22,r26}. The framework is validated through extensive simulations and comparative analysis against state-of-the-art benchmarks, demonstrating measurable improvements in key metrics such as network lifetime (targeting $\geq$30\%), packet delivery ratio ($\geq$98\%), energy balance, and coverage ratio while maintaining low computational overhead suitable for resource-constrained devices \cite{r2,r9,r12}.
+
+\section{Literature Surveys}
+
+\begin{table*}[width=.9\textwidth,cols=4,pos=h]
+\caption{Contention-Aware and Dynamic Duty-Cycle MAC Protocols}
+\label{table:mac_design_r21_r30}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} p{0.06\textwidth} p{0.22\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+\toprule
+\textbf{Ref.} & \textbf{Method} & \textbf{Issues Addressed} & \textbf{Limitations} \\
+\midrule
+
+\cite{r21} & Graph-theoretic MAC foundations &
+Establishes theoretical foundations for contention handling and duty cycling in large networks. &
+Conceptual focus only; no protocol-level implementation or evaluation. \\
+\addlinespace
+
+\cite{r22} & Disaster-area adaptive MAC &
+Supports dynamic and unreliable environments through adaptive routing and access control. &
+Review-oriented; lacks quantitative MAC contention analysis. \\
+\addlinespace
+
+\cite{r23} & Scale-free topology modeling &
+Analyzes contention behavior in large-scale network structures. &
+Model-based study without protocol validation. \\
+\addlinespace
+
+\cite{r26} & Industrial network optimization &
+Addresses scalability and contention in dense industrial deployments. &
+Simulation-heavy; MAC-layer duty cycling not explicitly optimized. \\
+\addlinespace
+
+\cite{r27} & GNN-based MAC intelligence &
+Learns contention patterns and adapts scheduling decisions. &
+High computational cost limits use on constrained sensor nodes. \\
+\addlinespace
+
+\cite{r28} & AI--IoT--Graph MAC framework &
+Reduces congestion through predictive scheduling in smart-city deployments. &
+Evaluation restricted to simulated urban datasets. \\
+\addlinespace
+
+\cite{r29} & Topology control with MAC interaction &
+Mitigates interference and contention via topology-aware scheduling. &
+Limited real-time adaptability under mobility. \\
+\addlinespace
+
+\cite{r30} & GNN-driven next-generation MAC &
+Addresses scalability and contention in massive IoT networks. &
+Preprint stage; lacks hardware or large-scale testbed validation. \\
+\addlinespace
+
+\cite{sensors2018} & Equilibrium-based routing and access &
+Balances contention and energy usage through equilibrium strategies. &
+Does not consider dynamic duty-cycle adaptation. \\
+
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\subsection{Review Paper Analysis}
+
+Wireless Sensor Networks (WSNs) have garnered considerable scholarly interest due to their use in environmental monitoring, industrial automation, healthcare, and IoT networks. They consist of numerous sensor nodes that are spatially dispersed and communicate with each other to transfer data to a sink node. Despite the numerous advantages offered by WSNs, they have several drawbacks, including low battery capacity, computational limitations, and communication complexities. As a result, developing routing protocols that improve the efficiency and reliability of wireless sensor networks has become a key area of research.
+
+The most prominent approach to wireless sensor network optimization has been the use of graph theory to model the wireless sensor network. In graph theory, a wireless sensor network is represented by vertices and edges. In this regard, each sensor node in the wireless sensor network is represented by a vertex, and the communication between nodes is represented by edges. Graph theory has been used to model wireless sensor networks to improve the overall efficiency of the routing protocols used in wireless sensor networks. Furthermore, graph theory has been used to minimize communication in wireless sensor networks by representing sensor nodes and the communication between them.
+
+Routing algorithms based on graphs have also been extensively explored for the optimization of wireless network data transmission paths. Generally, traditional routing algorithms such as Dijkstra's algorithm, the Bellman-Ford algorithm, and A* search have been used for the optimization of network paths, as they provide optimal solutions for wireless networks by minimizing the cost or delay associated with each path. However, most traditional routing algorithms have been developed for networks with fixed topologies, which is not the case for wireless networks, as the energy levels of wireless sensor networks change dynamically.
+
+In addition to path optimization, graph-based methodologies have been used for network topology management. Node degree, connectivity, and network topology have been used to identify the critical nodes required for network connectivity and routing efficiency. These methodologies have been used for the management of network topologies, reducing the overall complexity of wireless networks. Energy efficiency is one of the major problems in wireless sensor networks since sensor nodes use limited battery power. Once a sensor node exhausts its power supply, it becomes silent, thereby affecting the overall performance of the sensor network. Thus, most sensor nodes aim to use limited power while still maintaining communication with the sink node.
+
+Several researchers have proposed various energy-aware routing protocols that take into account various factors in a sensor network. These factors include minimizing hop counts or distances, node energy, and transmission costs. These factors are used to determine the best routes in a sensor network. For example, equilibrium-based routing is one protocol that uses a routing graph based on costs. These costs are determined by considering how much energy is consumed during transmission and how much is remaining in each node. These graphs are then optimized to ensure that no node is used more than others, thereby becoming exhausted.
+
+Another major group of methods centers on topology control and clustering. In clustering, the network is divided into clusters, each having a cluster head that collects information and sends it to the sink. This hierarchical structure reduces overhead costs and keeps long-range transmissions under control by using clustering for local data aggregation. Clustering methods using graph theory frequently depend on concepts such as minimum connected dominating sets or spanning trees for an efficient backbone for communication. The backbone structure helps maintain connectivity while reducing redundant transmissions and increasing efficiency.
+
+New surveys have also focused on the influence of topology control on routing efficiency in wireless sensor networks. The problem includes issues such as network connectivity, node failures, minimizing interference, energy efficiency, and scalability. Topology control aims to construct an energy-efficient network structure for reliable paths with minimal energy cost. However, it is difficult to obtain an optimum network structure as the network size increases and the network gets denser. In the context of IoT networks and next-generation wireless networks, new routing protocols have been developed to improve performance in complex networks by combining optimization, machine learning, and graph theory. The application of Graph Neural Networks (GNNs) is gaining significant attention as an effective tool for addressing the complexities of wireless networks, especially in terms of routing, as it takes into account the local and global dependencies between network nodes.
+
+\subsection*{Base Papers Analysis}
+
+This study by \cite{B1} proposed graph-theoretic optimization techniques for wireless sensor networks in Indian smart cities, focusing on shortest path finding, network flow maximization, and clustering to enhance efficiency, reliability, and scalability in urban infrastructure. The approach utilized Dijkstra's algorithm for logistics and transportation routing, Ford-Fulkerson for resource allocation in water and energy systems, and centrality measures for identifying influential nodes in social and biological networks, resulting in significant improvements in network efficiency, reduced energy consumption by up to 20\%, and better data transmission rates. Nevertheless, the case study relied on government reports without extensive real-time data validation, and the scalability in densely populated areas may be limited by computational demands on large graphs.
+
+The review by \cite{B2} examined graph-based techniques for data quality enhancement in IoT monitoring sensor networks, including graph signal processing and graph neural networks for tasks like missing value imputation, outlier detection, and virtual sensing. The methods leveraged graph topology to exploit structured data benefits, achieving higher accuracy in anomaly detection and up to 30\% better energy efficiency in decision-making processes for smart cities and environmental monitoring. However, the emphasis on machine learning over graphs assumes stable network structures, which may not hold in highly dynamic IoT environments with frequent node failures or mobility.
+
+This study by \cite{B3} explored applications of graph theory in optimization and network analysis, including shortest path algorithms like Dijkstra for transportation, maximum flow via Ford-Fulkerson for logistics, and clustering with centrality measures for social network analysis. The work demonstrated computational efficiency improvements of 15--25\% in resource management across domains like epidemiology and cybersecurity. Nevertheless, the analysis focuses on theoretical models without extensive empirical testing on massive real-world networks, potentially limiting applicability in time-sensitive applications.
+
+The work by \cite{B4} introduced the sharable slot-based MAC (SS-MAC) protocol for IEEE 802.15.4-based wireless sensor networks with cluster tree topology, combining improved hybrid CSMA/TDMA, channel-hopping, and a sharable slot algorithm with short addressing. The protocol reduced collision rates and energy consumption while improving throughput and packet delay, outperforming IEEE 802.15.4 MAC, SSMA, and LELLMAC in simulations. However, the asynchronous wake-up mechanism may introduce synchronisation overhead in highly dense networks, and the evaluation was only simulation-based.
+
+This study by \cite{B5} conducted an empirical analysis of energy behaviors in Bellman-Ford and Dijkstra algorithms to solve shortest single-source paths, using embedded sensors in HPC-class CPUs to measure power draw across complete and moderately dense graphs. Dijkstra proved drastically more energy-efficient due to time complexity advantages, but Bellman-Ford showed lower power draw for cache-fitting sizes. Nevertheless, the study was limited to small-to-medium graph sizes and did not explore parallel implementations or GPU optimisations.
+
+The work of \cite{B6} proposed a connectivity-oriented optimisation model for the deployment of scalable wireless sensor networks in smart water meters, integrating georeferenced urban layouts, set cover with capacity-awareness, and hybrid routing with minimum spanning trees. The hierarchical topology minimised data aggregation points while ensuring coverage and reducing energy consumption, outperforming ad hoc designs in network fragmentation and routing efficiency in densely populated urban areas.
+
+\subsection{Research Gaps}
+
+Graph-theoretic routing and optimization techniques have been widely explored to enhance energy efficiency, connectivity, and communication reliability in wireless sensor networks. Classical routing approaches based on shortest path and load balancing principles, such as those presented in \cite{B1,B2,B3}, demonstrate measurable improvements in network lifetime and data delivery efficiency. However, these methods are predominantly evaluated under moderate network densities and controlled simulation environments, limiting their applicability to large-scale deployments involving hundreds or thousands of sensor nodes.
+
+Several topology-aware and connectivity-focused routing strategies, including those in \cite{B4,B6,r6,r7}, emphasize maintaining robust network graphs through connected dominating sets and optimized topology control. While these approaches reduce routing overhead and improve fault tolerance, they introduce coordination complexity that grows rapidly with network size. Furthermore, many of these methods assume quasi-static topologies and do not adequately address frequent node failures, dynamic traffic patterns, or heterogeneous node capabilities commonly observed in real-world deployments.
+
+Recent advancements incorporating artificial intelligence and learning-based optimization have attempted to overcome these limitations. Deep reinforcement learning and graph neural network-based routing schemes in \cite{r2,r19,r27,r30} provide adaptive decision-making capabilities but require extensive training data, centralized control, or high computational resources. Such requirements are impractical for low-power sensor nodes with limited memory and processing capacity. Survey and review studies, including \cite{r3,r14,r18,r29}, consistently identify fragmentation in existing research, where routing optimization, energy management, topology control, and scalability are addressed in isolation rather than through integrated frameworks. Consequently, there remains a clear research gap in developing scalable, lightweight, and deployable graph-theoretic routing solutions that jointly address energy efficiency, connectivity, adaptability, and scalability in dense wireless sensor networks.
+
+\subsection{Motivation}
+
+The rapid expansion of Internet of Things applications has intensified the demand for large-scale wireless sensor network deployments in domains such as smart agriculture, industrial automation, environmental monitoring, disaster response, and smart urban infrastructure. These applications often involve thousands of densely deployed sensor nodes operating under stringent energy and computational constraints. Studies such as \cite{B6,r1} demonstrate that increasing node density significantly amplifies routing complexity, energy consumption, and network maintenance overhead if scalability is not explicitly considered in protocol design.
+
+Although graph-based routing approaches in \cite{B3,B4,sensors2018} improve communication efficiency through optimized path selection and reduced redundancy, their performance deteriorates as network contention and control traffic increase. Energy-efficient routing strategies evaluated in \cite{B2,B5} show promising results for moderate-scale networks, yet their benefits diminish in dense scenarios where packet collisions, retransmissions, and synchronization overhead become dominant contributors to energy drain. Emerging AI-driven optimization techniques, including those in \cite{r2,r27,r30}, introduce adaptability and learning capabilities but at the cost of increased system complexity, training overhead, and hardware dependency. These limitations motivate the need for a routing framework that leverages graph-theoretic principles to achieve scalable optimization while remaining lightweight and deployable on standard sensor hardware.
+
+\subsection{Problem Statement}
+
+The problem that this work seeks to solve can be described as the design of an efficient routing framework that utilizes the principles of graph theory to optimize the routing of wireless sensor networks, taking into consideration the energy efficiency, connectivity, and communication reliability of the sensor network. Unlike conventional routing protocols that are tested on limited scale wireless sensor networks, as shown in \cite{B1,B3,r8}, the routing protocol that this work seeks to design should be able to maintain its routing efficiency even as the scale of the wireless sensor network increases. Unlike conventional routing protocols, the routing protocol that this work seeks to design should be able to operate even without the utilization of centralized training and tuning of parameters, unlike what has been shown in \cite{r2,r30}.
+
+The wireless sensor network that this work seeks to optimize can be described as a weighted graph, with the sensor nodes being represented by the vertices of the weighted graph, and the communication links between the sensor nodes represented by the edges of the weighted graph. The objectives of the routing protocol that this work seeks to design are to improve the lifetime of the wireless sensor network, minimize the latency of the wireless sensor network, and improve the performance of the wireless sensor network by preventing degradation that might be caused by congestion and routing overhead \cite{B1,B3,r8}.
+
+\section{Proposed Work}
+
+\subsection{Network Model}
+
+Consider a dense wireless sensor network modeled as an undirected graph
+
+\begin{equation}
+G = (V,E)
+\end{equation}
+
+where $V = \{v_1, v_2, \ldots, v_N\}$ represents the set of sensor nodes and $E$ represents the set of communication links between nodes. A link $(v_i, v_j) \in E$ exists if nodes $v_i$ and $v_j$ are within communication range and can exchange packets over the wireless channel. The network consists of $N$ low-power sensor nodes and a sink node $v_s$ responsible for collecting sensed information. Sensor nodes are randomly deployed within a two-dimensional sensing region of area $A = L \times W$. After deployment, nodes remain static, which is typical for monitoring applications such as environmental sensing, industrial monitoring, and smart agriculture.
+
+The wireless sensor network considered in this study is modeled as a graph structure in which nodes represent sensing devices and edges represent communication links.
+
+\begin{equation}
+G = \{V, E\}
+\label{eq:graph_model}
+\end{equation}
+
+Each node maintains a set of neighboring nodes within the communication range.
+
+\begin{equation}
+N_i = \{v_j \in V \mid d_{ij} \leq R_c\}
+\label{eq:neighbor_set}
+\end{equation}
+
+The distance between nodes is computed using the Euclidean distance model.
+
+\begin{equation}
+d_{ij} = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2}
+\label{eq:distance}
+\end{equation}
+
+Energy consumption plays a critical role in network operation.
+
+\begin{equation}
+E_i(t) = E_i(0) - E_i^{cons}(t)
+\label{eq:residual_energy}
+\end{equation}
+
+\subsubsection{Node Architecture}
+
+Each sensor node $v_i$ is equipped with four fundamental components: sensing unit, processing unit, wireless communication module, and battery power source. Nodes operate under strict energy constraints and therefore employ energy-efficient communication strategies. The residual energy of node $v_i$ at time $t$ is represented as $E_i(t)$. A node remains operational as long as $E_i(t) > 0$. When the residual energy becomes zero, the node is considered inactive. Each node maintains a set of neighboring nodes defined as
+
+\begin{equation}
+N_i = \{ v_j \in V \mid (v_i,v_j) \in E , j \neq i \}
+\end{equation}
+
+which represents nodes located within its communication radius $R_c$.
+
+\subsubsection{Dense Deployment Assumption}
+
+The proposed framework targets dense wireless sensor networks where the number of nodes may range from hundreds to thousands. Dense deployment increases sensing reliability but introduces several challenges including channel contention, routing redundancy, and increased packet collisions. Therefore, efficient routing decisions must consider both connectivity and contention conditions in the network.
+
+\subsubsection{Traffic Model}
+
+Each sensor node generates sensing data that must be delivered to the sink node through multi-hop communication. Two types of traffic patterns are considered: periodic traffic, where packets are generated at regular intervals for continuous monitoring applications, and event-driven traffic, where packets are generated when sensing thresholds are exceeded. Let $\lambda_i(t)$ denote the packet generation rate at node $v_i$ during time interval $t$. Each node maintains a transmission queue with maximum capacity $Q_{max}$, where $q_i(t)$ denotes the instantaneous queue length.
+
+\subsubsection{Graph-Based Link Cost Model}
+
+To support graph-theoretic routing optimization, each communication edge is assigned a routing cost based on multiple network factors. The edge weight between nodes $v_i$ and $v_j$ is defined as
+
+\begin{equation}
+w_{ij} = \alpha d_{ij} + \beta \frac{1}{E_j(t)} + \gamma C_{ij}
+\end{equation}
+
+where $d_{ij}$ represents the Euclidean distance between nodes, $E_j(t)$ represents the residual energy of the next-hop node, $C_{ij}$ represents local channel contention or congestion level, and $\alpha, \beta, \gamma$ are weighting coefficients. This cost function enables routing decisions that balance energy efficiency, communication reliability, and congestion control.
+
+\subsubsection{Energy Consumption Model}
+
+Energy consumption in wireless sensor nodes mainly occurs during radio operations. The total energy consumed by node $v_i$ during interval $t$ is given by
+
+\begin{equation}
+E_i^{cons}(t) = P_{tx}T_{tx}(t) + P_{rx}T_{rx}(t) + P_{idle}T_{idle}(t) + P_{sleep}T_{sleep}(t)
+\end{equation}
+
+where $P_{tx}$, $P_{rx}$, $P_{idle}$, and $P_{sleep}$ denote the power consumption during transmission, reception, idle listening, and sleep states respectively. Since $P_{sleep} \ll P_{idle} < P_{rx} < P_{tx}$, minimizing unnecessary transmissions and idle listening is critical for extending network lifetime.
+
+\subsubsection{Connectivity Assumption}
+
+The network is assumed to be connected such that at least one multi-hop path exists between every sensor node and the sink node. Due to dense deployment, multiple routing paths may exist between a source node and the sink. While path redundancy increases reliability, excessive redundant transmissions may cause congestion and energy imbalance. Therefore, routing decisions must utilize graph-theoretic optimization techniques to select efficient paths that preserve connectivity while minimizing energy consumption and channel contention.
+
+\subsubsection{Design Objectives}
+
+The network model is formulated to support three primary design objectives. The first is energy efficiency, which seeks to maximize network lifetime through energy-aware routing decisions. The second is connectivity robustness, which aims to maintain stable connectivity under dense deployments. The third is communication reliability, which ensures high packet delivery ratio and low end-to-end delay. These objectives guide the development of the proposed graph-theoretic routing framework for dense wireless sensor networks.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{system_model.jpg}
+\caption{System model of dense wireless sensor network with graph-based routing.}
+\label{fig:system_model}
+\end{figure*}
+
+\subsection{Proposed Graph-Theoretic Routing Framework}
+
+The proposed routing framework is designed for a dynamic network environment in which conditions such as energy levels, traffic levels, and communication quality are constantly changing. In dense wireless sensor networks, more than one routing path may exist between source nodes and the sink node. Although having more than one routing path is beneficial for network reliability and fault tolerance, it also brings along certain challenges in relation to redundant communication and network congestion. The proposed graph theory-based routing framework helps in overcoming these challenges by considering multiple parameters while evaluating the routing path.
+
+The proposed framework gives more priority to nodes having better residual energy and lower congestion levels, thus making the routing process more efficient. This helps in overcoming the problem of energy holes, which is common in wireless sensor networks in which certain nodes are always used for data forwarding and thus drain their energy levels quickly. The proposed framework helps in balancing the energy levels and thus increases the network lifetime. When nodes are in a state of congestion or have low energy levels, their routing cost increases, thus making them less preferred for data forwarding. Hence, the proposed framework helps in selecting alternative nodes and routes for efficient communication. The use of alternative communication paths is beneficial in the reduction of redundant messages and the elimination of congestion in the network.
+
+The use of the proposed graph-theoretic routing framework is beneficial in the improvement of the wireless sensor network due to the modeling of the network as a weighted graph, where the nodes are represented as the vertices of the graph and the communication links are represented as the edges in the graph. The architecture of the proposed wireless sensor network is presented in Figure~\ref{fig:overview}. The wireless sensor network is based on a multi-phase routing process in which the first phase models the network as a graph structure and the second phase performs the topology discovery process. The proposed routing framework consists of five phases: network graph construction, local topology discovery, graph-based cost evaluation, optimal path selection, and adaptive routing maintenance.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{overview.jpg}
+\caption{Overview of the proposed graph theoretic routing framework for dense wireless sensor networks.}
+\label{fig:overview}
+\end{figure*}
+
+\subsubsection{Phase 1: Network Graph Construction}
+
+In the first phase, the wireless sensor network is represented as a weighted graph $G = (V,E)$, where vertices represent sensor nodes and edges represent wireless communication links between neighboring nodes. Each node identifies neighboring nodes located within its communication range $R_c$. The neighbor set of node $v_i$ is defined as $N_i = \{ v_j \in V \mid (v_i,v_j) \in E \}$. Using periodic beacon messages, nodes exchange identification and status information such as residual energy and queue occupancy, enabling the distributed construction of a local network graph at each node.
+
+\begin{equation}
+E_{tx}(k,d) = kE_{elec} + k\epsilon_{amp}d^2
+\label{eq:transmission_energy}
+\end{equation}
+
+\begin{equation}
+E_{rx}(k) = kE_{elec}
+\label{eq:reception_energy}
+\end{equation}
+
+\subsubsection{Phase 2: Local Topology Discovery}
+
+During this phase, each node collects local network information required for routing decisions. Nodes periodically monitor and update the residual energy of neighboring nodes, communication distance between nodes, packet queue length, and channel utilization or congestion level. Let $z_i(t)$ denote the observation vector maintained by node $v_i$:
+
+\[
+z_i(t) = [E_i(t),\; q_i(t),\; d_{ij},\; C_{ij}]
+\]
+
+where $E_i(t)$ is residual energy, $q_i(t)$ is queue length, $d_{ij}$ is distance between nodes, and $C_{ij}$ represents channel contention. This locally observed information enables nodes to evaluate routing decisions without relying on centralized control.
+
+\begin{equation}
+C_i = \frac{q_i}{Q_{max}}
+\label{eq:congestion_metric}
+\end{equation}
+
+\subsubsection{Phase 3: Graph-Based Cost Evaluation}
+
+After collecting topology information, each node evaluates the routing cost associated with each outgoing edge. The edge weight between nodes $v_i$ and $v_j$ is computed as
+
+\[
+w_{ij} = \alpha \frac{d_{ij}}{R_c} + \beta \frac{1}{E_j(t)} + \gamma C_{ij} + \delta \frac{q_j(t)}{Q_{max}}
+\]
+
+where $d_{ij}$ represents communication distance, $E_j(t)$ represents residual energy of the next-hop node, $C_{ij}$ represents channel congestion, $q_j(t)$ represents queue occupancy, and $\alpha,\beta,\gamma,\delta$ are weighting parameters. This cost function integrates multiple routing metrics and ensures that routing decisions simultaneously consider energy efficiency, congestion avoidance, and communication reliability.
+
+\begin{equation}
+W_{ij} = \alpha d_{ij} + \beta \frac{1}{E_j} + \gamma C_j
+\label{eq:routing_cost}
+\end{equation}
+
+\subsubsection{Phase 4: Optimal Path Selection}
+
+In this phase, each node selects the next-hop node that minimizes the cumulative routing cost toward the sink node. Using the graph representation, nodes perform distributed shortest-path evaluation based on the computed edge weights. The routing path is selected such that
+
+\[
+P^* = \arg \min \sum_{(i,j) \in P} w_{ij}
+\]
+
+where $P^*$ represents the optimal routing path between the source node and the sink. By minimizing cumulative routing cost, the framework avoids nodes with low residual energy or high congestion levels, thereby improving network lifetime and packet delivery reliability.
+
+\begin{equation}
+P^{*} = \arg\min \sum_{(i,j)\in P} W_{ij}
+\label{eq:optimal_path}
+\end{equation}
+
+\subsubsection{Phase 5: Adaptive Routing Maintenance}
+
+Wireless sensor networks may experience dynamic traffic variations and energy depletion over time. Therefore, routing paths must be periodically updated. Each node continuously monitors sudden increases in channel contention, depletion of neighbor node energy, queue overflow conditions, and link failure or packet loss. When any of these conditions exceed predefined thresholds, nodes recompute routing costs and update the routing path accordingly. This adaptive routing mechanism ensures that the network maintains efficient connectivity and avoids congestion even under high-density deployments.
+
+\begin{table*}[width=.9\textwidth,cols=4,pos=h]
+\caption{Phase-wise Summary of Proposed Routing Framework}
+\label{tab:phase_summary}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} p{0.1\textwidth} p{0.2\textwidth} p{0.25\textwidth} p{0.25\textwidth}}
+\toprule
+\textbf{Phase} & \textbf{Function} & \textbf{Key Parameters} & \textbf{Outcome} \\
+\midrule
+Phase 1 & Graph Construction & Node position, $R_c$ & Network graph $G(V,E)$ \\
+Phase 2 & Topology Discovery & $E_i(t)$, $d_{ij}$, $q_i$, $C_{ij}$ & Local node state vector \\
+Phase 3 & Cost Evaluation & $\alpha$, $\beta$, $\gamma$, $\delta$ & Weighted edge cost $W_{ij}$ \\
+Phase 4 & Path Selection & $W_{ij}$ & Optimal path $P^*$ \\
+Phase 5 & Adaptive Routing & Thresholds, congestion & Updated routing path \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\subsection{Routing Algorithm}
+
+The proposed graph-theoretic routing framework operates through a distributed algorithm executed independently at each sensor node. The algorithm dynamically evaluates network topology, computes routing costs using graph-based metrics, and selects optimal next-hop nodes for packet forwarding. The routing procedure is divided into a main algorithm and three supporting sub-algorithms responsible for topology discovery, edge cost computation, and path selection.
+
+\begin{algorithm}[!ht]
+\caption{Graph-Theoretic Adaptive Routing (GTAR)}
+\label{alg:gtar}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Require:}}
+\renewcommand{\algorithmicensure}{\textbf{Ensure:}}
+\REQUIRE Node $v_i$, neighbor set $N_i$, residual energy $E_i(t)$
+\ENSURE Next-hop routing decision
+\STATE Initialize routing table
+\WHILE{$E_i(t) > 0$}
+\STATE $N_i \leftarrow$ TOPOLOGY DISCOVERY$(v_i)$
+\STATE $W_i \leftarrow$ EDGE COST COMPUTATION$(N_i)$
+\STATE $v_{next} \leftarrow$ OPTIMAL PATH SELECTION$(W_i)$
+\IF{packet queue not empty}
+\STATE transmit packet to $v_{next}$
+\ELSE
+\STATE enter sleep mode
+\ENDIF
+\STATE update residual energy $E_i(t)$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!ht]
+\caption{TOPOLOGY DISCOVERY$(v_i)$}
+\label{alg:topology}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Require:}}
+\renewcommand{\algorithmicensure}{\textbf{Ensure:}}
+\REQUIRE Node $v_i$
+\ENSURE Updated neighbor set $N_i$
+\STATE broadcast beacon message
+\STATE receive neighbor responses
+\FOR{each responding node $v_j$}
+\STATE measure distance $d_{ij}$
+\STATE record residual energy $E_j$
+\STATE record queue length $q_j$
+\STATE record channel contention $C_{ij}$
+\ENDFOR
+\STATE construct local neighbor set $N_i$
+\RETURN $N_i$
+\end{algorithmic}
+\end{algorithm}
+
+The topology discovery algorithm helps each node maintain updated information about its neighborhood. Each node periodically sends out beacon messages to identify neighboring nodes within its range. The status information, such as the residual energy, queue size, and levels of congestion, is sent out by each responding node and is used as a base for building a local graph representing the network.
+
+\begin{algorithm}[!ht]
+\caption{EDGE COST COMPUTATION$(N_i)$}
+\label{alg:edgecost}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Require:}}
+\renewcommand{\algorithmicensure}{\textbf{Ensure:}}
+\REQUIRE Neighbor set $N_i$
+\ENSURE Edge weight set $W_i$
+\FOR{each neighbor $v_j \in N_i$}
+\STATE compute routing weight $w_{ij} = \alpha \frac{d_{ij}}{R_c} + \beta \frac{1}{E_j} + \gamma C_{ij} + \delta \frac{q_j}{Q_{max}}$
+\STATE store $w_{ij}$ in weight set $W_i$
+\ENDFOR
+\RETURN $W_i$
+\end{algorithmic}
+\end{algorithm}
+
+The edge cost computation algorithm measures the cost of routing associated with each communication link by taking into account the communication distance, the remaining energy of the next-hop node, as well as channel contention and congestion.
+
+\begin{algorithm}[!ht]
+\caption{OPTIMAL PATH SELECTION$(W_i)$}
+\label{alg:pathsel}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Require:}}
+\renewcommand{\algorithmicensure}{\textbf{Ensure:}}
+\REQUIRE Edge weight set $W_i$
+\ENSURE Selected next-hop node $v_{next}$
+\STATE initialize minimum cost $C_{min} \leftarrow \infty$
+\FOR{each weight $w_{ij} \in W_i$}
+\IF{$w_{ij} < C_{min}$}
+\STATE $C_{min} \leftarrow w_{ij}$
+\STATE $v_{next} \leftarrow v_j$
+\ENDIF
+\ENDFOR
+\RETURN $v_{next}$
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm selects the next-hop node that has the lowest routing cost determined in the preceding phase. By using the smallest edge weights, this algorithm finds routes that avoid nodes with low residual energy or high congestion, ensuring balanced traffic distribution and preventing premature energy depletion.
+
+\begin{table*}[width=.9\textwidth,cols=3,pos=h]
+\caption{Summary of Proposed Routing Algorithms}
+\label{tab:algo_summary}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
+\toprule
+\textbf{Algorithm} & \textbf{Function} & \textbf{Description} \\
+\midrule
+GTAR & Main Routing Control & Coordinates routing decisions and packet forwarding \\
+TopologyDiscovery & Neighbor Detection & Identifies neighboring nodes and collects local topology information \\
+EdgeCostComputation & Graph Cost Evaluation & Computes weighted routing cost using energy, distance, and congestion metrics \\
+OptimalPathSelection & Path Optimization & Selects the next-hop node with minimum routing cost \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{algorithm_flow.jpg}
+\caption{Flowchart of Graph-Theoretic Adaptive Routing Algorithm.}
+\label{fig:algo_flow}
+\end{figure*}
+
+\section{Computational Complexity Analysis}
+
+The computational complexity of the proposed graph theoretic routing framework is analyzed in terms of the number of sensor nodes and communication links in the network. Let $N$ denote the total number of nodes and $M$ denote the total number of communication links in the network. During the network graph construction phase, each node in the network identifies its neighboring nodes within its communication range. This process involves scanning the nearby nodes and hence its complexity is proportional to the number of nodes in the network and can be approximated as $\mathcal{O}(N)$.
+
+During the topology discovery phase, each node in the network collects local information regarding its neighboring nodes. This involves collecting local information from neighboring nodes and hence its complexity is proportional to the number of nodes in the network and can be approximated as $\mathcal{O}(N)$. During the graph-based cost evaluation phase, each communication link in the network is assigned a cost value. This process involves computing cost values for each edge in the network and hence its complexity is proportional to the number of communication links in the network and can be approximated as $\mathcal{O}(M)$.
+
+During the optimal path selection phase, each source node in the network is connected to the sink node using the minimum cost path. This process involves finding the minimum cost path in a weighted graph and hence its complexity is proportional to the number of nodes in the network and can be approximated as $\mathcal{O}(N\log N)$ using efficient graph algorithms such as Dijkstra's method. During the adaptive routing maintenance phase, each source node in the network is connected to the sink node using the minimum cost path. This process involves scanning each source node in the network and hence its complexity can be approximated as $\mathcal{O}(N)$. The proposed graph theoretic routing framework demonstrates polynomial time complexity and is well suited for large scale wireless sensor networks because of its distributed nature.
+
+\section{Results and Discussion}
+\label{sec:results}
+
+The simulation results are presented in two groups. The first group analyses the effect of varying packet generation rate on key performance metrics, while the second group examines the impact of increasing node density on network behaviour. All figures are generated from the GTAR routing framework and are discussed in detail below.
+
+\subsection{Effect of Packet Rate on Network Performance}
+
+\begin{figure*}[htbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph1.pdf}
+\vspace{-10pt}
+\caption{Throughput versus packet rate for the proposed GTAR routing algorithm.}
+\label{fig:graph1}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph2.pdf}
+\vspace{-10pt}
+\caption{Packet delivery ratio versus packet rate for GTAR.}
+\label{fig:graph2}
+\end{minipage}
+\end{figure*}
+
+Figure~\ref{fig:graph1} shows that throughput increases with packet generation rate and approaches saturation under heavy traffic conditions. As the packet generation rate increases from 10 to 150 packets per second, the throughput rises sharply, reaching approximately 3,500~Kbps. Beyond this point, the network approaches its channel capacity and the throughput plateaus, indicating that the routing layer is operating at its maximum sustainable load. This saturation behaviour is expected in dense multi-hop networks where channel contention limits further gains.
+
+Figure~\ref{fig:graph2} illustrates that packet delivery ratio remains stable initially and decreases at high traffic loads due to congestion. At low packet rates the PDR is maintained at approximately 25--30\%, reflecting successful multi-hop delivery through the graph-based routing paths. As the packet rate increases beyond 100 packets per second, queue overflow and channel collisions become dominant, causing the PDR to decline. This behaviour highlights the importance of the adaptive routing maintenance phase, which attempts to redistribute load away from congested nodes.
+
+\begin{figure*}[htbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph3.pdf}
+\vspace{-10pt}
+\caption{Average end-to-end delay versus packet rate.}
+\label{fig:graph3}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph4.pdf}
+\vspace{-10pt}
+\caption{Packet loss versus packet rate under GTAR routing.}
+\label{fig:graph4}
+\end{minipage}
+\end{figure*}
+
+Figure~\ref{fig:graph3} indicates that delay remains low for moderate traffic and rises sharply at higher packet rates. For packet rates below 100 packets per second, the end-to-end delay remains below 0.1 seconds, which is acceptable for most monitoring applications. At higher rates the queuing delay component dominates and the average delay approaches 0.5 seconds, driven by the increased waiting time at intermediate hops. The graph-based cost function, which penalises high queue occupancy, partially mitigates this effect by steering packets away from congested nodes.
+
+Figure~\ref{fig:graph4} demonstrates that packet loss increases significantly with offered load. The packet loss curve rises approximately linearly beyond the saturation point, confirming that the primary loss mechanism is buffer overflow rather than link failure. The weighted edge cost model ensures that nodes with high queue occupancy receive larger routing weights, causing the algorithm to prefer alternative paths wherever possible.
+
+\begin{figure*}[htbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph5.pdf}
+\vspace{-10pt}
+\caption{Received packets versus packet rate.}
+\label{fig:graph5}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph6.1.pdf}
+\vspace{-10pt}
+\caption{Transmitted packets versus packet rate.}
+\label{fig:graph6}
+\end{minipage}
+\end{figure*}
+
+Figure~\ref{fig:graph5} shows that the number of received packets increases initially and later stabilizes due to capacity limits. The received packet count grows rapidly between 10 and 150 packets per second, after which it flattens at approximately 55,000 packets, reflecting the throughput saturation observed in Figure~\ref{fig:graph1}. Figure~\ref{fig:graph6} indicates a near-linear increase in transmitted packets with packet generation rate, confirming that source nodes continue injecting traffic even when the network is saturated. The divergence between transmitted and received packet counts at high rates directly quantifies the packet loss shown in Figure~\ref{fig:graph4}.
+
+\subsection{Effect of Node Density on Network Performance}
+
+\begin{figure*}[htbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph7.pdf}
+\vspace{-10pt}
+\caption{Throughput versus number of nodes.}
+\label{fig:graph7}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph8.pdf}
+\vspace{-10pt}
+\caption{Packet delivery ratio versus number of nodes.}
+\label{fig:graph8}
+\end{minipage}
+\end{figure*}
+
+Figure~\ref{fig:graph7} shows throughput improvement initially, followed by decline in highly dense networks due to contention. At 50 nodes the throughput peaks at approximately 3,000~Kbps as the additional nodes provide richer routing paths that the graph-based framework can exploit. Beyond 100 nodes, increased channel contention and routing overhead outweigh the connectivity gains, causing throughput to decline steadily. This result confirms that the proposed framework is most effective in moderate-density deployments and motivates future work on contention-aware scheduling.
+
+Figure~\ref{fig:graph8} illustrates that delivery ratio decreases monotonically as node density increases. With 25 nodes the PDR is approximately 26\%, reflecting the limited routing diversity in sparse networks. As density increases to 100 nodes the PDR improves slightly due to better path availability, but beyond this point the increase in broadcast overhead from the topology discovery phase degrades performance. This trade-off between routing diversity and overhead is a fundamental challenge in dense WSN deployments.
+
+\begin{figure*}[htbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph9.pdf}
+\vspace{-10pt}
+\caption{Average delay versus number of nodes.}
+\label{fig:graph9}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph10.pdf}
+\vspace{-10pt}
+\caption{Packet loss versus number of nodes.}
+\label{fig:graph10}
+\end{minipage}
+\end{figure*}
+
+Figure~\ref{fig:graph9} shows that delay rises with increasing node density because of congestion and multi-hop routing. In sparse networks with 25 nodes the average delay is below 0.15 seconds. As the network scales to 500 nodes the delay exceeds 0.8 seconds, driven by the longer routing paths required to reach the sink and by increased queuing at each intermediate hop. The adaptive routing maintenance phase reduces this effect by detecting congested links and rerouting packets dynamically.
+
+Figure~\ref{fig:graph10} demonstrates that packet loss grows with larger node counts in dense deployment scenarios. The loss increases approximately linearly with node count, consistent with the throughput decline observed in Figure~\ref{fig:graph7}. The graph-based cost evaluation phase mitigates this by deprioritising nodes with high queue occupancy, but in very dense networks the number of high-congestion nodes becomes too large for the routing algorithm to avoid entirely.
+
+\begin{figure*}[htbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph11.pdf}
+\vspace{-10pt}
+\caption{Received packets versus number of nodes.}
+\label{fig:graph11}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{graph12.pdf}
+\vspace{-10pt}
+\caption{Transmitted packets versus number of nodes.}
+\label{fig:graph12}
+\end{minipage}
+\end{figure*}
+
+Figure~\ref{fig:graph11} shows that received packets increase initially and later reduce because of excessive contention. The peak is reached at approximately 100 nodes, beyond which the received packet count falls as contention losses dominate. Figure~\ref{fig:graph12} indicates that transmitted packet count increases steadily with total network size, as more source nodes inject traffic into the network. The growing gap between transmitted and received packets at higher node counts quantifies the scalability limit of the proposed framework and provides a clear benchmark for future improvements incorporating machine learning-based traffic prediction and intelligent scheduling.
+
+\section{Conclusion}
+
+This piece proposes a novel graph-based routing protocol with the primary objective of improving efficiency in densely deployed wireless sensor networks. The protocol addresses major issues in energy consumption, routing congestion, and reliability in communications, which are major challenges in large-scale sensor networks. The network is modeled using a weighted graph where sensor nodes are represented by vertices and edges are used to denote communications.
+
+Using this model, routing is accomplished using distributed cost-based evaluation and adaptive routing. The routing protocol uses a multi-phase process to build the network graph, determine local topology, calculate graph-based costs, determine optimal routes, and adapt routing. These phases enable sensor nodes to evaluate their local environment and choose energy-conserving routes in real-time without relying on centralized processing. The protocol uses a combination of network parameters such as residual energy, transmission distance, congestion in the transmission queue, and channel usage to distribute workload and prevent premature battery drain. Future plans include large-scale simulations, implementation with machine learning-based traffic prediction, and evaluation using real-world wireless sensor hardware to test its viability in future IoT systems.
+
+\section{Declarations}
+
+\subsection{Ethical Approval}
+This manuscript reports studies that do not involve human participants, human data, human tissue, or animals.
+
+\subsection{Conflict of Interest}
+The authors have no conflict of interest to declare that are relevant to the content of this article.
+
+\subsection{Authors' Contributions}
+S.~Gopikrishnan contributed to the conceptualization, formal analysis, drafting the original manuscript, and designing the experimental protocols. Author-2 was responsible for conceptualization, methodology, software implementation, and dataset curation. Author-3 contributed to conceptualization, supervision, and in-depth analysis of the experimental results, and handled the review and editing of the final draft, as well as the overall validation of the study results.
+
+\subsection{Funding}
+The authors did not receive financial support from any organization for the submitted work.
+
+\subsection{Availability of data and materials}
+Data sharing is not applicable to this article, as no new data were created or analyzed in this study.
+
+\subsection{Acknowledgment}
+We acknowledge that the hardware utilized in this research for evaluation is a part of the Intel IoT Center for Excellence, VIT-AP University.
+
+\bibliographystyle{cas-model2-names}
+\bibliography{references}
+
+\end{document}
